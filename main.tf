@@ -27,5 +27,12 @@ resource "aws_security_group" "instance" {
     to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+    tags = {
+      Maintainer = "anasa@ciklum.com"
+    }
   }
+}
+output "public_ip" {
+  value       = aws_instance.example.public_ip
+  description = "The public IP address of the web server"
 }
